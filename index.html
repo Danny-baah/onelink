@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#004d2c" />
+  <meta name="description" content="Access Bank Ghana OneLink - Quick mobile app or website onboarding access." />
+  <title>Access Bank Ghana | Get Started</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Instant Desktop Check to prevent UI flicker on desktop browsers -->
+  <script>
+    (function () {
+      var ONBOARDING_URL = "https://onboarding.ghana.accessbankplc.com/";
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      var isAndroid = /android/i.test(ua);
+      var isMobile = isIOS || isAndroid;
+
+      if (!isMobile) {
+        // Immediate redirect for Desktop visitors
+        window.location.replace(ONBOARDING_URL);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Background decorative ambient gradients -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <main class="page-container">
+    <div class="card" id="landingCard">
+      <!-- Brand Logo / Badge -->
+      <div class="brand-badge-container">
+        <div class="brand-badge" aria-label="Access Bank Logo Badge">
+          <!-- Stylized Access Chevron/Arrow Monogram in SVG -->
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="badge-icon">
+            <rect width="40" height="40" rx="10" fill="url(#badgeGrad)" />
+            <path d="M12 28L20 12L28 28L23.5 28L20 20.5L16.5 28H12Z" fill="#FFFFFF" />
+            <path d="M16 23.5L20 15.5L24 23.5H21.2L20 20.8L18.8 23.5H16Z" fill="#FFB703" />
+            <defs>
+              <linearGradient id="badgeGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#005A34" />
+                <stop offset="1" stop-color="#003D22" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="brand-name">access bank</span>
+      </div>
+
+      <!-- Header Content -->
+      <header class="card-header">
+        <h1 class="card-title">Get Started</h1>
+        <p class="card-subtitle">Choose how you'd like to open Access Bank Ghana</p>
+      </header>
+
+      <!-- Action Buttons for Mobile Users -->
+      <div class="action-buttons">
+        <!-- Primary Button: Mobile App Store -->
+        <button id="btnApp" class="btn btn-primary" type="button">
+          <div class="btn-icon" id="appIconSlot">
+            <!-- App Icon (Smart Icon populated by script or default) -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <div class="btn-text-group">
+            <span class="btn-title">Continue to the App</span>
+            <span class="btn-hint" id="storeHint">Download or open mobile app</span>
+          </div>
+          <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Secondary Button: Website Onboarding -->
+        <button id="btnWeb" class="btn btn-secondary" type="button">
+          <div class="btn-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <div class="btn-text-group">
+            <span class="btn-title">Continue to Website</span>
+            <span class="btn-hint">Onboarding web portal</span>
+          </div>
+          <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Security / Footer Note -->
+      <footer class="card-footer">
+        <div class="security-badge">
+          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Official &amp; Secure Access Portal</span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Fallback Desktop Notice (Shown only if desktop redirect is delayed or disabled by browser) -->
+    <div id="desktopNotice" class="desktop-fallback" style="display: none;">
+      <p>Redirecting to Access Bank Ghana Onboarding...</p>
+      <a id="desktopLink" href="https://onboarding.ghana.accessbankplc.com/" class="text-link">Click here if not redirected automatically</a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

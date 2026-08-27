@@ -1,0 +1,388 @@
+/* ==========================================================================
+   Access Bank OneLink Landing Page Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Brand Color Palette */
+  --color-primary: #004D2C;         /* Access Bank Dark Green */
+  --color-primary-hover: #003D22;   /* Deeper Green on hover */
+  --color-primary-active: #002E19;  /* Deepest Green */
+  --color-primary-light: #E8F5EE;   /* Soft Green tint for accents */
+  --color-accent: #FFB703;          /* Warm Gold/Amber accent */
+  
+  /* Neutral Palette */
+  --bg-page: #F4F7F5;               /* Clean subtle warm-slate background */
+  --bg-card: #FFFFFF;               /* Crisp pure white card */
+  --text-main: #141A16;             /* Near-black primary text */
+  --text-muted: #5C6E63;            /* Soft slate-green secondary text */
+  --text-subtle: #899C91;           /* Light muted text */
+  
+  /* Secondary Button Palette */
+  --btn-secondary-bg: #EEF2EF;      /* Modern light gray-green */
+  --btn-secondary-hover: #E2E8E4;   /* Slight hover state */
+  --btn-secondary-border: #E0E7E2;
+  --btn-secondary-text: #19271E;
+
+  /* Typography & Sizing */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --radius-card: 24px;
+  --radius-btn: 16px;
+  --radius-badge: 12px;
+  
+  /* Elevation Shadows */
+  --shadow-card: 0 12px 40px -10px rgba(0, 50, 25, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+  --shadow-btn-primary: 0 6px 20px -4px rgba(0, 77, 44, 0.35);
+  --shadow-btn-secondary: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+/* Decorative Ambient Glows */
+.ambient-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-top {
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #007A46 0%, rgba(0, 77, 44, 0) 70%);
+}
+
+.glow-bottom {
+  bottom: -100px;
+  right: -50px;
+  background: radial-gradient(circle, #FFB703 0%, rgba(255, 183, 3, 0) 70%);
+  opacity: 0.12;
+}
+
+/* Main Container */
+.page-container {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card Component */
+.card {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 77, 44, 0.06);
+  padding: 36px 28px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: cardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Brand Badge */
+.brand-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-badge);
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 77, 44, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.brand-badge:hover {
+  transform: translateY(-2px);
+}
+
+.badge-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.brand-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Card Header */
+.card-header {
+  margin-bottom: 28px;
+}
+
+.card-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  font-weight: 400;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Action Buttons Container */
+.action-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* Base Button Styles */
+.btn {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: var(--radius-btn);
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  user-select: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(0, 77, 44, 0.4);
+  outline-offset: 2px;
+}
+
+.btn:active {
+  transform: scale(0.985);
+}
+
+/* Button Internal Components */
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-text-group {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.btn-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.btn-hint {
+  font-size: 0.78rem;
+  margin-top: 3px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-left: 10px;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover .chevron-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Primary Button (App Store / Play Store) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-btn-primary);
+}
+
+.btn-primary .btn-icon {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.btn-primary .btn-hint {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 8px 24px -4px rgba(0, 77, 44, 0.45);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-active);
+}
+
+/* Secondary Button (Web Onboarding) */
+.btn-secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+  box-shadow: var(--shadow-btn-secondary);
+}
+
+.btn-secondary .btn-icon {
+  background-color: #FFFFFF;
+  color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-secondary .btn-hint {
+  color: var(--text-muted);
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-secondary-hover);
+  border-color: #D3DDD6;
+}
+
+/* Security Footer */
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  font-weight: 500;
+}
+
+.lock-icon {
+  width: 13px;
+  height: 13px;
+  stroke: var(--color-primary);
+}
+
+/* Desktop Fallback Message */
+.desktop-fallback {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.text-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  margin-top: 6px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* Small Screens Optimization */
+@media (max-width: 360px) {
+  body {
+    padding: 14px;
+  }
+  .card {
+    padding: 28px 18px 22px;
+  }
+  .card-title {
+    font-size: 1.45rem;
+  }
+  .btn {
+    padding: 14px 14px;
+  }
+  .btn-title {
+    font-size: 0.95rem;
+  }
+  .btn-hint {
+    font-size: 0.72rem;
+  }
+}

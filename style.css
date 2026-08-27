@@ -136,13 +136,13 @@ body {
 }
 
 .brand-logo {
-  max-width: 180px;
-  width: auto;
+  width: 100%;
+  max-width: 280px;
   height: auto;
-  max-height: 52px;
+  max-height: 190px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
 }
 
 /* Card Header */
@@ -355,6 +355,9 @@ body {
   }
   .card-title {
     font-size: 1.45rem;
+  }
+  .brand-logo {
+    max-width: 220px;
   }
   .btn {
     padding: 14px 14px;

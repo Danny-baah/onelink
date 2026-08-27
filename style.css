@@ -127,42 +127,22 @@ body {
   }
 }
 
-/* Brand Badge */
-.brand-badge-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.brand-badge {
-  width: 52px;
-  height: 52px;
+/* Brand Logo */
+.brand-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-badge);
-  background: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(0, 77, 44, 0.12);
-  transition: transform 0.2s ease;
+  margin-bottom: 24px;
 }
 
-.brand-badge:hover {
-  transform: translateY(-2px);
-}
-
-.badge-icon {
-  width: 44px;
-  height: 44px;
-}
-
-.brand-name {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-primary);
+.brand-logo {
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  max-height: 52px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
 }
 
 /* Card Header */

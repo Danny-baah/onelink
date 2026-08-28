@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Access Bank OneLink Landing Page Stylesheet (Static Non-Scrollable Layout)
+   Access Bank OneLink Landing Page Stylesheet
    ========================================================================== */
 
 :root {
@@ -19,14 +19,13 @@
   /* Typography & Sizing */
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --radius-btn: 18px;
-  --radius-pill: 50px;
 
   /* Elevation Shadows */
-  --shadow-btn-app: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(181, 211, 52, 0.4);
-  --shadow-btn-web: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(255, 130, 0, 0.4);
+  --shadow-btn-app: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(181, 211, 52, 0.45);
+  --shadow-btn-web: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(255, 130, 0, 0.45);
 }
 
-/* Reset & Strict Viewport Constraint */
+/* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -36,75 +35,66 @@
 
 html, body {
   width: 100%;
-  height: 100%;
-  height: 100dvh;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
   font-family: var(--font-family);
   color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fullscreen Background Image - Smiling portrait visible and vibrant */
+/* Fullscreen Background - Vibrant and visible on all devices */
 body {
+  background-color: #f6c026;
+  background-image: url('background.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0;
-  background: #111813 url('background.webp') no-repeat center 18% / cover;
+  align-items: flex-start;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Subtle Vignette Gradient for High Contrast Legibility */
+/* Subtle, gentle gradient overlay so the yellow background and smiling face remain bright */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  height: 100dvh;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.05) 25%,
-    rgba(0, 0, 0, 0.12) 48%,
-    rgba(0, 0, 0, 0.65) 82%,
-    rgba(0, 0, 0, 0.88) 100%
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.0) 25%,
+    rgba(0, 0, 0, 0.05) 45%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0.8) 100%
   );
   pointer-events: none;
   z-index: 0;
 }
 
-/* Main Container - Strict Single Screen Fit without Scrolling */
+/* Main Container */
 .page-container {
   width: 100%;
-  max-width: 430px;
-  height: 100%;
-  height: 100dvh;
-  max-height: 100dvh;
+  max-width: 420px;
+  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: max(24px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
-  overflow: hidden;
+  padding: max(28px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
 }
 
-/* Direct Layout Container */
+/* Card / Content Flow Container */
 .card {
   width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: center;
   animation: contentFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -125,12 +115,8 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px auto 0;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  flex-shrink: 0;
+  margin: 0 auto;
+  padding-top: 4px;
 }
 
 .brand-logo {
@@ -145,9 +131,8 @@ body::before {
 
 /* 2. Header Content - Positioned Starting Directly at the Chin Area */
 .card-header {
-  margin-top: 13vh;
-  margin-bottom: auto;
-  flex-shrink: 0;
+  margin-top: 11vh;
+  margin-bottom: 20px;
 }
 
 .card-title {
@@ -155,30 +140,29 @@ body::before {
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 1.15;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-/* 3. Bottom Section: Action Buttons & Security Footer */
+/* 3. Bottom Section: Connected right below the header with consistent natural spacing */
 .bottom-section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
 }
 
 .action-buttons {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 13px;
+  margin-bottom: 18px;
 }
 
 /* Base Button Styles */
 .btn {
   width: 100%;
-  padding: 15px 18px;
+  padding: 16px 18px;
   border-radius: var(--radius-btn);
   font-family: inherit;
   border: none;
@@ -191,7 +175,6 @@ body::before {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
   user-select: none;
-  backdrop-filter: blur(8px);
 }
 
 .btn:focus-visible {
@@ -277,7 +260,7 @@ body::before {
 
 .btn-primary:hover {
   background-color: var(--color-primary-app-hover);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(181, 211, 52, 0.5);
+  box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(181, 211, 52, 0.5);
   transform: translateY(-2px);
 }
 
@@ -304,7 +287,7 @@ body::before {
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-web-hover);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(255, 130, 0, 0.5);
+  box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(255, 130, 0, 0.5);
   transform: translateY(-2px);
 }
 
@@ -340,7 +323,7 @@ body::before {
 
 /* Desktop Fallback Message */
 .desktop-fallback {
-  margin: auto 0;
+  margin: 30px auto 0;
   text-align: center;
   font-size: 0.95rem;
   color: #FFFFFF;
@@ -359,13 +342,14 @@ body::before {
   font-weight: 600;
 }
 
-/* Small Screens / Short Screen Optimization */
-@media (max-height: 680px) {
+/* Small Screens Optimization */
+@media (max-width: 380px) {
   .page-container {
-    padding: max(16px, env(safe-area-inset-top)) 16px max(14px, env(safe-area-inset-bottom));
+    padding: max(20px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
   }
   .card-header {
-    margin-top: 9vh;
+    margin-top: 8vh;
+    margin-bottom: 16px;
   }
   .card-title {
     font-size: 1.85rem;
@@ -375,12 +359,7 @@ body::before {
     max-height: 38px;
   }
   .btn {
-    padding: 13px 15px;
-  }
-  .btn-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    padding: 14px 15px;
   }
   .btn-title {
     font-size: 0.95rem;
@@ -390,6 +369,6 @@ body::before {
   }
   .action-buttons {
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 }

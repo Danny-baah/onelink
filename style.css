@@ -126,7 +126,6 @@ body::before {
   max-height: 44px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.75)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.9));
 }
 
 /* 2. Header Content - Positioned Starting Directly at the Chin Area */
@@ -141,7 +140,6 @@ body::before {
   color: #FFFFFF;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.95);
 }
 
 /* 3. Bottom Section: Connected right below the header with consistent natural spacing */

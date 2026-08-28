@@ -110,13 +110,13 @@ body::before {
   }
 }
 
-/* 1. Brand Logo at the Top */
+/* 1. Brand Logo at the Top (Just above head level) */
 .brand-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  padding-top: 4px;
+  margin: 3.5vh auto 0;
+  padding-top: 0;
 }
 
 .brand-logo {
@@ -131,7 +131,7 @@ body::before {
 
 /* 2. Header Content - Positioned Starting Directly at the Chin Area */
 .card-header {
-  margin-top: 28vh;
+  margin-top: 36vh;
   margin-bottom: 20px;
 }
 
@@ -348,7 +348,7 @@ body::before {
     padding: max(20px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
   }
   .card-header {
-    margin-top: 24vh;
+    margin-top: 32vh;
     margin-bottom: 16px;
   }
   .card-title {

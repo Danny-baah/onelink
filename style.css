@@ -131,7 +131,7 @@ body::before {
 
 /* 2. Header Content - Positioned Starting Directly at the Chin Area */
 .card-header {
-  margin-top: 11vh;
+  margin-top: 28vh;
   margin-bottom: 20px;
 }
 
@@ -348,7 +348,7 @@ body::before {
     padding: max(20px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
   }
   .card-header {
-    margin-top: 8vh;
+    margin-top: 24vh;
     margin-bottom: 16px;
   }
   .card-title {

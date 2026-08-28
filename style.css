@@ -115,18 +115,16 @@ body::before {
   }
 }
 
-/* Brand Logo at the Top */
+/* Brand Logo at the Top (Directly on background, solid white) */
 .brand-logo-container {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 10px 22px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   margin: 0 auto 36px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
   transition: transform 0.2s ease;
 }
 
@@ -135,12 +133,13 @@ body::before {
 }
 
 .brand-logo {
-  max-width: 140px;
+  max-width: 175px;
   width: auto;
   height: auto;
-  max-height: 40px;
+  max-height: 48px;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.7)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
 }
 
 /* Header Content (Middle / Center Anchor) */
@@ -359,7 +358,7 @@ body::before {
     font-size: 1.8rem;
   }
   .brand-logo {
-    max-width: 120px;
+    max-width: 150px;
   }
   .btn {
     padding: 15px 16px;

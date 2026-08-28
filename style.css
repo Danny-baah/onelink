@@ -4,35 +4,31 @@
 
 :root {
   /* Brand Color Palette */
-  --color-primary: #004D2C;         /* Access Bank Dark Green */
-  --color-primary-hover: #003D22;   /* Deeper Green on hover */
-  --color-primary-active: #002E19;  /* Deepest Green */
-  --color-primary-light: #E8F5EE;   /* Soft Green tint for accents */
-  --color-accent: #FFB703;          /* Warm Gold/Amber accent */
-  
-  /* Neutral Palette */
-  --bg-page: #F4F7F5;               /* Clean subtle warm-slate background */
-  --bg-card: #FFFFFF;               /* Crisp pure white card */
-  --text-main: #141A16;             /* Near-black primary text */
-  --text-muted: #5C6E63;            /* Soft slate-green secondary text */
-  --text-subtle: #899C91;           /* Light muted text */
-  
-  /* Secondary Button Palette */
-  --btn-secondary-bg: #EEF2EF;      /* Modern light gray-green */
-  --btn-secondary-hover: #E2E8E4;   /* Slight hover state */
-  --btn-secondary-border: #E0E7E2;
-  --btn-secondary-text: #19271E;
+  --color-primary-app: #B5D334;     /* Vibrant Lime-Green for App button */
+  --color-primary-app-hover: #A3C227;
+  --color-primary-app-active: #92AE20;
+  --color-app-text: #101D02;        /* Dark high-contrast text for lime button */
+  --color-app-subtext: #344E0C;
+
+  --color-secondary-web: #FF8200;   /* Access Bank Signature Orange */
+  --color-secondary-web-hover: #E67500;
+  --color-secondary-web-active: #CC6800;
+  --color-web-text: #FFFFFF;        /* Pure white text for orange button */
+  --color-web-subtext: rgba(255, 255, 255, 0.9);
+
+  --color-brand-dark: #004D2C;
+  --color-accent-gold: #FFB703;
 
   /* Typography & Sizing */
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --radius-card: 24px;
-  --radius-btn: 16px;
-  --radius-badge: 12px;
-  
-  /* Elevation Shadows */
-  --shadow-card: 0 12px 40px -10px rgba(0, 50, 25, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
-  --shadow-btn-primary: 0 6px 20px -4px rgba(0, 77, 44, 0.35);
-  --shadow-btn-secondary: 0 2px 6px rgba(0, 0, 0, 0.02);
+  --radius-card: 28px;
+  --radius-btn: 18px;
+  --radius-pill: 50px;
+
+  /* Shadows */
+  --shadow-card: 0 20px 60px -10px rgba(0, 0, 0, 0.5), 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+  --shadow-btn-app: 0 8px 24px -4px rgba(181, 211, 52, 0.45);
+  --shadow-btn-web: 0 8px 24px -4px rgba(255, 130, 0, 0.45);
 }
 
 /* Reset & Box Sizing */
@@ -47,30 +43,50 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: var(--font-family);
-  background-color: var(--bg-page);
-  color: var(--text-main);
+  color: #FFFFFF;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Background Image with Atmospheric Overlay */
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 24px 16px;
   position: relative;
+  background: #0d160f url('background.webp') no-repeat center center fixed;
+  background-size: cover;
 }
 
-/* Decorative Ambient Glows */
+/* Dark Vignette Overlay for Crisp Readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 12, 0.45) 0%,
+    rgba(10, 16, 12, 0.65) 50%,
+    rgba(5, 10, 8, 0.88) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient Accent Glows */
 .ambient-glow {
   position: fixed;
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.25;
+  filter: blur(90px);
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
 }
@@ -79,20 +95,20 @@ body {
   top: -80px;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, #007A46 0%, rgba(0, 77, 44, 0) 70%);
+  background: radial-gradient(circle, #B5D334 0%, rgba(181, 211, 52, 0) 70%);
 }
 
 .glow-bottom {
   bottom: -100px;
   right: -50px;
-  background: radial-gradient(circle, #FFB703 0%, rgba(255, 183, 3, 0) 70%);
-  opacity: 0.12;
+  background: radial-gradient(circle, #FF8200 0%, rgba(255, 130, 0, 0) 70%);
+  opacity: 0.25;
 }
 
 /* Main Container */
 .page-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 410px;
   position: relative;
   z-index: 1;
   display: flex;
@@ -100,26 +116,27 @@ body {
   align-items: center;
 }
 
-/* Card Component */
+/* Glassmorphic Card Container */
 .card {
   width: 100%;
-  background: var(--bg-card);
+  background: rgba(14, 22, 18, 0.75);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  border: 1px solid rgba(0, 77, 44, 0.06);
-  padding: 36px 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 34px 24px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  animation: cardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: cardFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes cardFadeIn {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.98);
+    transform: translateY(16px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -127,45 +144,44 @@ body {
   }
 }
 
-/* Brand Logo */
+/* Brand Logo Badge */
 .brand-logo-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  margin-bottom: 22px;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo-container:hover {
+  transform: translateY(-2px);
 }
 
 .brand-logo {
-  width: 100%;
-  max-width: 280px;
+  max-width: 140px;
+  width: auto;
   height: auto;
-  max-height: 190px;
+  max-height: 42px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
 }
 
 /* Card Header */
 .card-header {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .card-title {
-  font-size: 1.65rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 8px;
-}
-
-.card-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.45;
-  font-weight: 400;
-  max-width: 280px;
-  margin: 0 auto;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Action Buttons Container */
@@ -174,7 +190,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 /* Base Button Styles */
@@ -196,7 +212,7 @@ body {
 }
 
 .btn:focus-visible {
-  outline: 3px solid rgba(0, 77, 44, 0.4);
+  outline: 3px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
 }
 
@@ -206,8 +222,8 @@ body {
 
 /* Button Internal Components */
 .btn-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -231,14 +247,16 @@ body {
 
 .btn-title {
   font-size: 1.02rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .btn-hint {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   margin-top: 3px;
   line-height: 1.2;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -249,61 +267,67 @@ body {
   height: 18px;
   flex-shrink: 0;
   margin-left: 10px;
-  opacity: 0.7;
+  opacity: 0.85;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn:hover .chevron-arrow {
   opacity: 1;
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
-/* Primary Button (App Store / Play Store) */
+/* Primary Button (App: Color #B5D334) */
 .btn-primary {
-  background-color: var(--color-primary);
-  color: #FFFFFF;
-  box-shadow: var(--shadow-btn-primary);
+  background-color: var(--color-primary-app);
+  color: var(--color-app-text);
+  box-shadow: var(--shadow-btn-app);
 }
 
 .btn-primary .btn-icon {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
+  background-color: rgba(16, 29, 2, 0.12);
+  color: var(--color-app-text);
 }
 
 .btn-primary .btn-hint {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-app-subtext);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-hover);
-  box-shadow: 0 8px 24px -4px rgba(0, 77, 44, 0.45);
+  background-color: var(--color-primary-app-hover);
+  box-shadow: 0 10px 28px -4px rgba(181, 211, 52, 0.6);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
-  background-color: var(--color-primary-active);
+  background-color: var(--color-primary-app-active);
+  transform: translateY(0) scale(0.985);
 }
 
-/* Secondary Button (Web Onboarding) */
+/* Secondary Button (Web Portal: Color #FF8200) */
 .btn-secondary {
-  background-color: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  border: 1px solid var(--btn-secondary-border);
-  box-shadow: var(--shadow-btn-secondary);
+  background-color: var(--color-secondary-web);
+  color: var(--color-web-text);
+  box-shadow: var(--shadow-btn-web);
 }
 
 .btn-secondary .btn-icon {
-  background-color: #FFFFFF;
-  color: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
 }
 
 .btn-secondary .btn-hint {
-  color: var(--text-muted);
+  color: var(--color-web-subtext);
 }
 
 .btn-secondary:hover {
-  background-color: var(--btn-secondary-hover);
-  border-color: #D3DDD6;
+  background-color: var(--color-secondary-web-hover);
+  box-shadow: 0 10px 28px -4px rgba(255, 130, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-secondary-web-active);
+  transform: translateY(0) scale(0.985);
 }
 
 /* Security Footer */
@@ -318,27 +342,32 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.75rem;
-  color: var(--text-subtle);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
   font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .lock-icon {
-  width: 13px;
-  height: 13px;
-  stroke: var(--color-primary);
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-primary-app);
 }
 
 /* Desktop Fallback Message */
 .desktop-fallback {
   margin-top: 20px;
   text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 14px 20px;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
 }
 
 .text-link {
-  color: var(--color-primary);
+  color: var(--color-primary-app);
   text-decoration: underline;
   margin-top: 6px;
   display: inline-block;
@@ -348,24 +377,24 @@ body {
 /* Small Screens Optimization */
 @media (max-width: 360px) {
   body {
-    padding: 14px;
+    padding: 16px 12px;
   }
   .card {
-    padding: 28px 18px 22px;
+    padding: 26px 16px 20px;
   }
   .card-title {
-    font-size: 1.45rem;
+    font-size: 1.6rem;
   }
   .brand-logo {
-    max-width: 220px;
+    max-width: 120px;
   }
   .btn {
     padding: 14px 14px;
   }
   .btn-title {
-    font-size: 0.95rem;
+    font-size: 0.94rem;
   }
   .btn-hint {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
   }
 }

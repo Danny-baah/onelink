@@ -41,55 +41,58 @@
         <h1 class="card-title">Get Started</h1>
       </header>
 
-      <!-- Action Buttons for Mobile Users -->
-      <div class="action-buttons">
-        <!-- Primary Button: Mobile App Store -->
-        <button id="btnApp" class="btn btn-primary" type="button">
-          <div class="btn-icon" id="appIconSlot">
-            <!-- App Icon (Smart Icon populated by script or default) -->
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+      <!-- Bottom Section: Buttons & Footer -->
+      <div class="bottom-section">
+        <!-- Action Buttons for Mobile Users -->
+        <div class="action-buttons">
+          <!-- Primary Button: Mobile App Store -->
+          <button id="btnApp" class="btn btn-primary" type="button">
+            <div class="btn-icon" id="appIconSlot">
+              <!-- App Icon (Smart Icon populated by script or default) -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <div class="btn-text-group">
+              <span class="btn-title">Upgraded Access bank mobile app</span>
+              <span class="btn-hint" id="storeHint">Download or open mobile app</span>
+            </div>
+            <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-          </div>
-          <div class="btn-text-group">
-            <span class="btn-title">Upgraded Access bank mobile app</span>
-            <span class="btn-hint" id="storeHint">Download or open mobile app</span>
-          </div>
-          <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+          </button>
 
-        <!-- Secondary Button: Website Onboarding -->
-        <button id="btnWeb" class="btn btn-secondary" type="button">
-          <div class="btn-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          <!-- Secondary Button: Website Onboarding -->
+          <button id="btnWeb" class="btn btn-secondary" type="button">
+            <div class="btn-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <div class="btn-text-group">
+              <span class="btn-title">Account opening web portal</span>
+              <span class="btn-hint">Continue to website</span>
+            </div>
+            <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-          </div>
-          <div class="btn-text-group">
-            <span class="btn-title">Account opening web portal</span>
-            <span class="btn-hint">Continue to website</span>
-          </div>
-          <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Security / Footer Note -->
-      <footer class="card-footer">
-        <div class="security-badge">
-          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <span>Official &amp; Secure Access Portal</span>
+          </button>
         </div>
-      </footer>
+
+        <!-- Security / Footer Note -->
+        <footer class="card-footer">
+          <div class="security-badge">
+            <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Official &amp; Secure Access Portal</span>
+          </div>
+        </footer>
+      </div>
     </div>
 
     <!-- Fallback Desktop Notice (Shown only if desktop redirect is delayed or disabled by browser) -->

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Access Bank OneLink Landing Page Stylesheet
+   Access Bank OneLink Landing Page Stylesheet (Static Non-Scrollable Layout)
    ========================================================================== */
 
 :root {
@@ -18,15 +18,15 @@
 
   /* Typography & Sizing */
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --radius-btn: 20px;
+  --radius-btn: 18px;
   --radius-pill: 50px;
 
-  /* Shadows */
-  --shadow-btn-app: 0 10px 28px -4px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(181, 211, 52, 0.4);
-  --shadow-btn-web: 0 10px 28px -4px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(255, 130, 0, 0.4);
+  /* Elevation Shadows */
+  --shadow-btn-app: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(181, 211, 52, 0.4);
+  --shadow-btn-web: 0 10px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(255, 130, 0, 0.4);
 }
 
-/* Reset & Box Sizing */
+/* Reset & Strict Viewport Constraint */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -36,10 +36,14 @@
 
 html, body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
   font-family: var(--font-family);
   color: #FFFFFF;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,14 +53,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   padding: 0;
-  position: relative;
-  background: #111813 url('background.webp') no-repeat center center fixed;
-  background-size: cover;
+  background: #111813 url('background.webp') no-repeat center 18% / cover;
 }
 
-/* Subtle, gentle vignette to ensure high legibility while keeping the subject crystal clear */
+/* Subtle Vignette Gradient for High Contrast Legibility */
 body::before {
   content: "";
   position: fixed;
@@ -64,34 +65,39 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.4) 0%,
     rgba(0, 0, 0, 0.05) 25%,
-    rgba(0, 0, 0, 0.15) 55%,
-    rgba(0, 0, 0, 0.65) 85%,
-    rgba(0, 0, 0, 0.85) 100%
+    rgba(0, 0, 0, 0.12) 48%,
+    rgba(0, 0, 0, 0.65) 82%,
+    rgba(0, 0, 0, 0.88) 100%
   );
   pointer-events: none;
   z-index: 0;
 }
 
-/* Main Container - Full Height Mobile Layout with Premium Vertical Spacing */
+/* Main Container - Strict Single Screen Fit without Scrolling */
 .page-container {
   width: 100%;
-  max-width: 440px;
-  min-height: 100vh;
+  max-width: 430px;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 48px 24px 32px;
+  padding: max(24px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+  overflow: hidden;
 }
 
-/* Direct Layout Container (No Card Box) */
+/* Direct Layout Container */
 .card {
   width: 100%;
+  height: 100%;
   background: transparent;
   border: none;
   box-shadow: none;
@@ -99,15 +105,14 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
   text-align: center;
-  animation: contentFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: contentFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes contentFadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -115,60 +120,65 @@ body::before {
   }
 }
 
-/* Brand Logo at the Top (Directly on background, solid white) */
+/* 1. Brand Logo at the Top */
 .brand-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 36px;
+  margin: 6px auto 0;
   background: transparent;
   padding: 0;
   border-radius: 0;
   box-shadow: none;
-  transition: transform 0.2s ease;
-}
-
-.brand-logo-container:hover {
-  transform: translateY(-2px);
+  flex-shrink: 0;
 }
 
 .brand-logo {
-  max-width: 175px;
+  max-width: 165px;
   width: auto;
   height: auto;
-  max-height: 48px;
+  max-height: 44px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.7)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.75)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.9));
 }
 
-/* Header Content (Middle / Center Anchor) */
+/* 2. Header Content - Positioned Starting Directly at the Chin Area */
 .card-header {
-  margin: auto 0 40px;
+  margin-top: 13vh;
+  margin-bottom: auto;
+  flex-shrink: 0;
 }
 
 .card-title {
-  font-size: 2.1rem;
+  font-size: 2.15rem;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.03em;
-  line-height: 1.15;
-  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.9);
+  line-height: 1.12;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-/* Action Buttons Container (Bottom Section) */
+/* 3. Bottom Section: Action Buttons & Security Footer */
+.bottom-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
 .action-buttons {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 /* Base Button Styles */
 .btn {
   width: 100%;
-  padding: 17px 20px;
+  padding: 15px 18px;
   border-radius: var(--radius-btn);
   font-family: inherit;
   border: none;
@@ -178,7 +188,7 @@ body::before {
   text-align: left;
   text-decoration: none;
   position: relative;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
   user-select: none;
   backdrop-filter: blur(8px);
@@ -195,20 +205,20 @@ body::before {
 
 /* Button Internal Components */
 .btn-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-right: 14px;
+  margin-right: 12px;
   transition: background-color 0.2s ease;
 }
 
 .btn-icon .icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .btn-text-group {
@@ -219,15 +229,15 @@ body::before {
 }
 
 .btn-title {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 .btn-hint {
-  font-size: 0.82rem;
-  margin-top: 3px;
+  font-size: 0.78rem;
+  margin-top: 2px;
   line-height: 1.2;
   font-weight: 500;
   white-space: nowrap;
@@ -236,10 +246,10 @@ body::before {
 }
 
 .chevron-arrow {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
-  margin-left: 10px;
+  margin-left: 8px;
   opacity: 0.85;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -267,7 +277,7 @@ body::before {
 
 .btn-primary:hover {
   background-color: var(--color-primary-app-hover);
-  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(181, 211, 52, 0.5);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(181, 211, 52, 0.5);
   transform: translateY(-2px);
 }
 
@@ -294,7 +304,7 @@ body::before {
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-web-hover);
-  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(255, 130, 0, 0.5);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(255, 130, 0, 0.5);
   transform: translateY(-2px);
 }
 
@@ -308,22 +318,22 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 4px;
+  padding-top: 2px;
 }
 
 .security-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .lock-icon {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   stroke: var(--color-primary-app);
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
 }
@@ -349,24 +359,37 @@ body::before {
   font-weight: 600;
 }
 
-/* Small Screens Optimization */
-@media (max-width: 380px) {
+/* Small Screens / Short Screen Optimization */
+@media (max-height: 680px) {
   .page-container {
-    padding: 36px 16px 24px;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(14px, env(safe-area-inset-bottom));
+  }
+  .card-header {
+    margin-top: 9vh;
   }
   .card-title {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
   }
   .brand-logo {
-    max-width: 150px;
+    max-width: 145px;
+    max-height: 38px;
   }
   .btn {
-    padding: 15px 16px;
+    padding: 13px 15px;
+  }
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
   .btn-title {
-    font-size: 0.96rem;
+    font-size: 0.95rem;
   }
   .btn-hint {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
+  }
+  .action-buttons {
+    gap: 10px;
+    margin-bottom: 10px;
   }
 }
